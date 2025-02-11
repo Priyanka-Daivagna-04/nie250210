@@ -3,6 +3,7 @@ import FlightCreate from "./flights/FlightCreate"
 import FlightEdit from "./flights/FlightEdit"
 import FlightList from "./flights/FlightList"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Counter from "./Counter"
 function App() {
   
 
@@ -18,6 +19,7 @@ function App() {
       </Routes>
       </BrowserRouter>
     </div>
+    <Counter/>
     </>
   )
 }
