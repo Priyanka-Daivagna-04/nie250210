@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Pizza</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Order Your Pizza</h1>
+        <form>
+            <!-- Customer Name -->
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Enter your name">
+            </div>
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter your address">
+            </div>
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+            </div>
+            <!-- Pizza Size -->
+            <div class="form-group">
+                <label for="pizzaSize">Choose your pizza size:</label>
+                <select class="form-control" id="pizzaSize">
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                </select>
+            </div>
+            <!-- Toppings -->
+            <div class="form-group">
+                <label>Choose your toppings:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="toppingPepperoni">
+                    <label class="form-check-label" for="toppingPepperoni">Pepperoni</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="toppingMushrooms">
+                    <label class="form-check-label" for="toppingMushrooms">Mushrooms</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="toppingOnions">
+                    <label class="form-check-label" for="toppingOnions">Onions</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="toppingOlives">
+                    <label class="form-check-label" for="toppingOlives">Olives</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="toppingPeppers">
+                    <label class="form-check-label" for="toppingPeppers">Bell Peppers</label>
+                </div>
+            </div>
+            <!-- Quantity -->
+            <div class="form-group">
+                <label for="pizzaQuantity">Quantity:</label>
+                <input type="number" class="form-control" id="pizzaQuantity" min="1" value="1">
+            </div>
+            <!-- Payment Method -->
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method:</label>
+                <select class="form-control" id="paymentMethod">
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>Cash on Delivery</option>
+                </select>
+            </div>
+            <!-- Card Details (for online payment) -->
+            <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" class="form-control" id="cardNumber" placeholder="Enter your card number">
+            </div>
+            <div class="form-group">
+                <label for="cardExpiry">Card Expiry Date:</label>
+                <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY">
+            </div>
+            <div class="form-group">
+                <label for="cardCVV">CVV:</label>
+                <input type="text" class="form-control" id="cardCVV" placeholder="Enter CVV">
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">Order Now</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
