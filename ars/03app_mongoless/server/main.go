@@ -1,30 +1,32 @@
 package main
+
 import (
-   // "fmt"
-   "net/http"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
-type Flight struct {
-	Id string
-	Number string
-	AirlineName string
-	Source string
-	Destination string
-	Capacity int 
-	Price float32
-}
-func readAllFlights(c *gin.Context){
-            c.JSON(http.StatusOK, "Hello World")
-}
-func main(){
-	//router
-	r := gin.Default()
-	//route API endpoints
-	r.GET("/flights",readAllFlights)
-	//server DEFAULT PORT 8080 r.Run("8080")
-	r.Run()
-   /*flight1 := Flight {Id: "1001",Number:"AI 845",
-   AirlineName: "Air India",Source:"Mumbai",Destination: "Abu Dabi",Capacity: 180,Price: 15000.0   }
-   fmt.Println(flight1)*/
 
+type Flight struct {
+	Id          string
+	Num         string
+	Airline     string
+	Source      string
+	Destination string
+	Capacity    int
+	Price       float32
+}
+
+func readallflights(c *gin.Context) {
+	flights := []Flight{{Id: "201", Num: "AI 845", Airline: "Air India", Source: "Mumbai", Destination: "Destination", Capacity: 180, Price: 15000.0},
+		{Id: "201", Num: "AI 845", Airline: "Air India", Source: "Mumbai", Destination: "Destination", Capacity: 180, Price: 15000.0},
+	}
+
+	c.JSON(http.StatusOK, flights)
+}
+func main() {
+	// flight1:=Flight{Id: "201",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0}
+	// fmt.Println(flight1)
+	r := gin.Default()
+	r.GET("/flights", readallflights)
+	r.Run()
 }
