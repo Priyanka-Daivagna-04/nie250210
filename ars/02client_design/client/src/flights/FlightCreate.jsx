@@ -30,7 +30,7 @@ function FlightCreate(){
             <label htmlFor="price" className="form-label">Ticket Price:</label>
             <input type="text" className="form-control" id="price" placeholder="Please enter ticket price"/>
         </div>
-        <button className="btn btn-success">Create Flight</button>didi should turn off light at elven ten sharp understand
+        <button className="btn btn-success">Create Flight</button>
     </div>
          </>
     )
