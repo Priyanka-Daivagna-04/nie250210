@@ -8,13 +8,13 @@ import (
 )
 
  type Flight struct {
-	Id string
-	Number string
-	Airline string
-	Source string
-	Destination string
-	Capacity int
-	Price float32
+	Id string `json:"id"`
+	Number string `json:"number"`
+	Airline string `json:"airline_name"`
+	Source string   `json:"source"`
+	Destination string `json:"destination"`
+	Capacity int `json:"capacity"`
+	Price float32 `json:"price"`
  }
  func readallflights(c *gin.Context){
 	flights:=[]Flight{{Id: "201",Number: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0},
