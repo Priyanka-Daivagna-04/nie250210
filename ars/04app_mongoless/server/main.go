@@ -2,16 +2,18 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
 type Pizza struct {
-	Id       string
-	Name     string
-	Size     string
-	Price    float32
-	Category string
+	Id       string `json:"id"`
+	Name     string  `json:"name"`
+	Size     string `json:"size"`
+	Price    float32 `json:"price"`
+	Category string `json:"category"`
 }
 
 func readAllPizza(c *gin.Context) {
@@ -61,6 +63,14 @@ func main() {
 	// flight1:=Flight{Id: "201",Number: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0}
 	// fmt.Println(flight1)
 	r := gin.Default()
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5174"}, // React frontend URL
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 	r.GET("/pizzas", readAllPizza)
 	r.GET("/pizzas/:id", readPizzabyid)
 	r.POST("/pizzas", createPizza)
