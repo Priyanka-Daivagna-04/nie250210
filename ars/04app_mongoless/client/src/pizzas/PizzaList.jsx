@@ -3,54 +3,69 @@ import PageHeader from "../header/PageHeader";
 import axios from "axios";
 
 function PizzaList() {
-  const [pizzas,setPizzas]=useState([]);
+  const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   const readAllPizzas = async () => {
-      
-       try{
-          const baseUrl = 'http://localhost:8080'
-          const response = await axios.get(`${baseUrl}/pizzas`);
-          setPizzas(response.data);
-       }catch(error){
-          alert(`Server Error`);
-       }
+    try {
+      const baseUrl = "http://localhost:8080";
+      const response = await axios.get(`${baseUrl}/pizzas`);
+      setPizzas(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError("Failed to fetch pizzas. Please try again later.");
+      setLoading(false);
+    }
   };
-  useEffect(()=>{readAllPizzas();},[]);
+
+  useEffect(() => {
+    readAllPizzas();
+  }, []);
+
   return (
     <>
       <h2 className="text-center">Pizza Delivery</h2>
       <PageHeader PageNumber={2} />
-      <table className="table table-striped table-bordered thick-border">
-        <thead>
-          <tr className="table-primary">
-            <th scope="col">ID</th>
-            <th scope="col">Pizza Name</th>
-            <th scope="col">Size</th>
-            <th scope="col">Price</th>
-            <th scope="col">Category</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          { pizzas.map( (flight)=>{
-                            return(
-                              <tr>
-                              <th scope="row">PI1</th>
-                              <td>Margherita</td>
-                              <td>Medium</td>
-                              <td>210/-</td>
-                              <td>Veg</td>
-                              <td>
-                                <a href="/pizzas/edit/PI1" className="btn btn-warning">Edit</a>
-                                <a href="/pizzas/order/PI1" className="btn btn-danger">Order</a>
-                              </td>
-                            </tr>
 
-                            );
-                        })
-                        }
-        </tbody>
-      </table>
+      {loading && <p className="text-center">Loading pizzas...</p>}
+      {error && <p className="text-danger text-center">{error}</p>}
+
+      {!loading && !error && (
+        <table className="table table-striped table-bordered thick-border">
+          <thead>
+            <tr className="table-primary">
+              <th scope="col">ID</th>
+              <th scope="col">Pizza Name</th>
+              <th scope="col">Size</th>
+              <th scope="col">Price</th>
+              <th scope="col">Category</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {pizzas.map((pizza) => (
+              <tr key={pizza.id}>
+                <th scope="row">{pizza.id}</th>
+                <td>{pizza.name}</td>
+                <td>{pizza.size}</td>
+                <td>{pizza.price}</td>
+                <td>{pizza.category}</td> {/* Fixed mapping */}
+                <td>
+                  <a href={`/pizzas/edit/PI1/${pizza.id}`} className="btn btn-warning">
+                    Edit
+                  </a>
+                  <a href={`/pizzas/order/PI1/${pizza.id}`} className="btn btn-danger">
+                    Order
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
       <style>
         {`
           .table-bordered th, .table-bordered td {
@@ -75,6 +90,13 @@ function PizzaList() {
             font-weight: bold;
             padding: 10px;
             color: #222; /* Dark gray for text */
+          }
+          .text-center {
+            text-align: center;
+          }
+          .text-danger {
+            color: red;
+            font-weight: bold;
           }
         `}
       </style>

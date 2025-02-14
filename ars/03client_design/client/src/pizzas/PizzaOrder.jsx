@@ -5,6 +5,10 @@ function PizzaOrder(){
         <>
             <div className="container">
                 <h3 className="text-center my-4">Order Your Pizza</h3>
+            <h4>
+          <a href="/pizzas/list" className="btn btn-warning">Go Back</a>
+        </h4>
+                
                 <form>
                     {/* Customer Name */}
                     <div className="form-group">
